@@ -1,0 +1,38 @@
+<%- include('header'); -%>
+
+<section id="postLinksOut">
+  <h2>My Intellectual Matches</h2>
+  <a id="swipingLink" class="btn btn-warning btn-lg" href="/profile">Return to Swiping</a>
+  <a id="myFavTopics" class="btn btn-warning btn-lg" href="/favoritesBoard">Return to favoritesBoard</a>
+</section>
+ <br> <br>
+  <ul>
+    <%# Question: why is there a for loop here if the page is only showing 1 image. %>
+
+  <% for(var i=0; i<topics.length; i++) {%>
+    <%# Only showing the people who have chosen that topic (aside from oneself!) %>
+    <% if (user.local.email !== topics[i].email) { %>
+    <li>
+      <section id="listItemContainer">
+        <br>
+        <img src="<%= topics[i].imageSRC%>"> <br>
+          <span id= "topicWrapper"><%= topics[i].topic %></span> <br>
+          <span id="linkWrapper"> <a target="_blank" href="<%= topics[i].link %>"> View Article </a></span> <br>
+        <span id = "firstNameSpecifier"> Person You Matched With:</span> <span id="firstNameSpecifierNameOnly"> <%= topics[i].firstName %> </span> <br>
+        <span id = "ageSpecifier"> Age: <%= topics[i].age %> </span> <br>
+        <span id = "genderSpecifier"> Gender: <%= topics[i].gender %> </span> <br>
+        <span id = "topicSpecifier"> topic: <%= topics[i].keyword %></span> <br>
+        <span id = "matchMaker"> their email: <%= topics[i].email %> </span> <br>
+        <img id="profilePic" src="<%= topics[i].profileImg %>">
+        <section id="postLinksOut">
+          <a id="swipingLink" class="btn btn-warning btn-lg" href="/profileMessage/<%= topics[i].posterId%>">Start Chatting! </a>
+        </section> <br>
+      </section>
+       <%# <span><i class="fa fa-heart" aria-hidden="true"></i></span> <br>
+      <span><i class="fa fa-trash" aria-hidden="true"></i></span>  %>
+    <% } %>
+    </li>
+    <% } %>
+  </ul>
+
+<%- include('footer'); -%>
