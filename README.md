@@ -1,14 +1,19 @@
-## Installation
+# intel.Matcher
 
+### Installation
+```sh
 1. Clone repo
-2. run `npm install`
+2. run npm install
+```
 
-## Usage
-
-1. run `node server.js`
-2. Navigate to `localhost:8080`
-
-## Credit
-
+### Usage
+```sh
+1. run node server.js
+2. Navigate to localhost:3000
+```
+### Tools Used
+```sh
+ HTML/EJS 5, VanillaJS, Node.js, MongoDB, CSS3,
+```
+#### Credit
 Modified from Scotch.io's auth tutorial
-# intelMatcher
