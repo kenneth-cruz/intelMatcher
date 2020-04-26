@@ -17,3 +17,5 @@
 ```
 #### Credit
 Modified from Scotch.io's auth tutorial
+
+[![HomePage](public/img/index.png)]
