@@ -1,10 +1,20 @@
-<%# Input Header (which is mostly the links to CSS-styling) for the page. %>
-<%- include('header'); -%>
+<!doctype html>
+<html>
+  <head>
+      <title>IntelMatcher</title>
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="signUp.css">
+  		<link href="https://fonts.googleapis.com/css?family=Montserrat|Noto+Sans+KR|Quicksand&display=swap" rel="stylesheet">
+      <link rel="icon" href="heartThunder.png">
+
+  </head>
+  <body>
+
   <div class="container userContainerLog">
     <div class="col-sm-6 col-sm-offset-3">
 
-        <h1 id= "welcomeBack"> Welcome Back :) </h1> <br>
-        <h1 id= "welcomeBack"> Login</h1>
+        <h1 id= "welcomeBack"> Welcome Back! </h1> <br>
 
         <% if (message.length > 0) { %>
             <div class="alert alert-danger"><%= message %></div>
@@ -27,8 +37,8 @@
 
         <hr>
 
-        <p> Don't have an account yet? <a href="/signup">Signup</a></p>
-        <p>Or go <a href="/">home</a>.</p>
+        <p> Don't have an account yet? <a href="/signup" style="color: black;" >Signup</a></p>
+        <p>Or go <a href="/" style="color: black;" >home</a>.</p>
 
 
     </div>

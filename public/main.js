@@ -63,7 +63,14 @@ let urlDisplayLink = document.getElementById('urlDisplayLink')
 let titleDisplay = document.getElementById('titleDisplay')
 let imageDisplay = document.getElementById('imageDisplay')
 
-  document.getElementById('headlineSearcher').addEventListener('click', function(){
+
+topicChoice.addEventListener('keyup', function(event) {
+  if (event.keyCode === 13) {
+     event.preventDefault();
+     document.getElementById("headlineSearcher").click();
+    }
+});
+  document.getElementById('headlineSearcher').addEventListener('click', function hello(){
 
       fetch(`https://newsapi.org/v2/top-headlines?language=en&q=${topicChoice.value}&apiKey=10d4e4ba0b9a4c95b9ab5d81a4b1947d`)
       .then(res => res.json())
@@ -72,12 +79,22 @@ let imageDisplay = document.getElementById('imageDisplay')
         document.getElementById('titleDisplay').innerHTML = `${headlines.articles[1].title}`;
         document.getElementById('urlDisplayLink').href = `${headlines.articles[1].url}`;
         document.getElementById('urlDisplayLink').innerText = `${headlines.articles[1].url}`;
-        document.getElementById('imageDisplay').src = `${headlines.articles[1].urlToImage}`;
+        console.log(headlines.articles[1].urlToImage)
+        // document.getElementById('imageDisplay').src = `${headlines.articles[1].urlToImage}`;
 
         console.log(headlines, 'all the data')
 
 
       })
+
+      fetch(`https://pixabay.com/api/?key=16231649-cda0457639d81c5ea1819be58&q=${topicChoice.value}&image_type=photo`)
+            .then(res => res.json())
+            .then(media => {
+              // let randomNumber = Math.floor(Math.random()*2)
+              document.getElementById('imageDisplay').src = `${media.hits[1].largeImageURL}`;
+              console.log(media, 'photo should appear')
+            })
+
 })
 
 // make another onclick ... like a POST.

@@ -1,9 +1,45 @@
 body{
   padding-top:80px;
   word-wrap:break-word;
+  background-color: #966C75 !important;
+	font-family: 'Quicksand', sans-serif !important;
 }
 img{
   height: 200px;
+}
+#newsPaperImage{
+  height: 30px !important;
+  width: 30px !important;
+}
+#messageBox, #senderofMessageBox{
+  width: 20em;
+  height: 2.75em;
+  border: solid black .5px !important;
+}
+#messageForm{
+  display: inline-block;
+}
+#messageSubmit{
+  background-color: #502B2F;
+  border: solid black 1px;
+}
+#ulPopulating{
+  color: black;
+}
+#liPopulating{
+text-align: left;
+}
+#DMContainer{
+  display: inline-block;
+}
+.btn-lg {
+    padding: 10px 16px !important;
+    color: black !important;
+    font-size: 18px !important;
+    line-height: 1.33 !important;
+    border-radius: 6px !important;
+    width: fit-content !important;
+    background: linear-gradient(262deg, #ff7854, #ffB8d1) !important;
 }
 
 @import url(./public/webfonts/fontawesome-all.min.css);
@@ -82,6 +118,11 @@ input, select, textarea {
 
 /* DEMO DAY PROJECT DEMO DAY PROJECT DEMO DAY PROJECT DEMO DAY PROJECT DEMO DAY PROJECT DEMO DAY PROJECT DEMO DAY PROJECT DEMO DAY PROJECT */
 
+#matchSpecification{
+  display: inline-block;
+  text-align: left;
+}
+
 #welcomeBack{
   text-align: center;
   color: beige;
@@ -90,6 +131,10 @@ input, select, textarea {
   width: 40%;
   margin-left: 30%;
   border: solid white 1px;
+}
+.listItemContainerPostsBoard{
+  border: solid #E0E1E9 2px !important;
+  border-radius: 1%;
 }
 #listItemContainerFavoritesBoard{
   width: 40%;
@@ -105,45 +150,41 @@ input, select, textarea {
   margin-top: 5%;
 }
 #linkWrapper, #topicWrapper{
-  width: 40%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 30%;
+  width: 70%;
+  display: inline-block;
 }
 
 .userContainerLog{
 	margin-top: 10% !important;
 }
-  #matchMaker{
-    font-size: 30px !important;
-    font-weight: bold !important;
-    color: red !important;
-  }
-  #ageSpecifier{
-    font-size: 30px !important;
-    font-weight: bold !important;
-    color: beige !important;
+
+  #firstNameSpecifier, #ageSpecifier, #genderSpecifier, #topicSpecifier, #emailSpecifier{
+    color: black !important;
   }
   #firstNameSpecifier{
     font-size: 30px !important;
     font-weight: bold !important;
-    color: lightgreen !important;
   }
   #firstNameSpecifierNameOnly{
     font-size: 30px !important;
     font-weight: bold !important;
-    color: black !important;
+    color: white !important;
+  }
+  #ageSpecifier{
+    font-size: 30px !important;
+    font-weight: bold !important;
   }
   #genderSpecifier{
     font-size: 30px !important;
     font-weight: bold !important;
-    color: lightblue !important;
   }
   #topicSpecifier{
     font-size: 30px !important;
     font-weight: bold !important;
-    color: orange !important;
+  }
+  #emailSpecifier{
+    font-size: 30px !important;
+    font-weight: bold !important;
   }
 	.mainSearchSection {
 		color:red !important;

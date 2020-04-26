@@ -59,21 +59,75 @@ app.get('/profile', isLoggedIn, function(req, res) {
 });
 
 // MESSAGE RECIEPT SECTION =========================
+var collectionOne = [];
+var collectionTwo = [];
 app.get('/profileMessage/:posterID', isLoggedIn, function(req, res) {
     let posterId = ObjectId(req.params.posterID)
     let uId = ObjectId(req.session.passport.user)
     console.log(posterId, 'ZOINKS!!')
-    db.collection('users').find({_id: posterId}).toArray((err, result) => {
-      if (err) return console.log(err)
-      console.log(result, 'LOL')
-      res.render('profileMessage.ejs'
-      , {
-        user : req.user,
-        targetUser: result
-      }
-    )
+    console.log(req.user, 'Person Logged IN!')
+
+    ///collection 1
+    let query1 = db.collection('users').find({_id: posterId}).toArray((err, result) => {
+      if (err) console.log(err);
+      else{
+        for (i=0; i<result.length; i++) {
+              collectionOne[i] = result[i];
+            }
+
+            /// collection 2
+            let query2 = db.collection('messages').find({senderID: uId}).toArray((err, result) => {
+              if (err) console.log(error);
+              else{
+                for (i=0; i<result.length; i++) {
+                      collectionTwo[i] = result[i];
+                    }
+                    console.log(collectionOne, 'collection1');
+                    console.log(collectionOne[0].local, 'wut');
+                    console.log(collectionTwo, 'collection2');
+                    console.log(req.user, 'WTF');
+                    res.render('profileMessage.ejs', {
+                      collectionOne: collectionOne,
+                      collectionTwo: collectionTwo,
+                      present: req.user
+                    });
+                  }
+                });
+
+
+          }
+    });
+  });
+
+
+
+
+
+
+
+
+
+
+// message board routes ===============================================================
+    //Create
+    app.post('/messages', (req, res) => {
+//creating a message with the username ( email) the message they post, thumbUp and thumbDown and each time you press submit, this is activated and saves to the database
+//console.log redirects you back to profile.ejs (refresh)
+      let baseUrl = 'http://localhost:3000/profileMessage/';
+      // let receiverID =
+      // console.log(req, 'meep')
+      let senderID = req.user._id
+      let bigURL = req.headers.referer;
+      let receiverID = ObjectId(bigURL.split(baseUrl)[1]);
+      console.log(receiverID, 'receiverID')
+      console.log(req.user, 'LMAO')
+      db.collection('messages').save({senderID: senderID, receiverID: receiverID, name: req.body.name, msg: req.body.msg}, (err, result) => {
+        if (err) return console.log(err)
+        console.log('saved to database')
+        //refreshing the page, which will then display with the latest message added.
+        res.redirect('/favoritesBoard')
+      })
     })
-});
 
 // INDIVIDUAL POST PAGE =========================
 // Question: you told us that zebra in the following two lines can be anything, why does it break if nothing is there.
